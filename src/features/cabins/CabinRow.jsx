@@ -1,5 +1,11 @@
 import styled from "styled-components";
+import { useState } from "react";
+
+import CreateCabinForm from "./CreateCabinForm";
+import { useDeleteCabin } from "./useDeleteCabin";
 import { formatCurrency } from "../../utils/helpers";
+import { HiPencil, HiSquare2Stack, HiTrash } from "react-icons/hi2";
+import { useCreateCabin } from "./useCreateCabin";
 
 
 const TableRow = styled.div`
@@ -41,21 +47,41 @@ const Discount = styled.div`
   color: var(--color-green-700);
 `;
 
-function CabinRow( cabin ) {
-  const { name, maxCapacity, regularPrice, discount, image} = cabin;
+function CabinRow( {cabin } ) {
+  const [showForm, setShowForm] = useState(false);
+  const {isDeleting, deleteCabin } = useDeleteCabin();
+  const {isCreating, createCabin} = useCreateCabin();
 
-  return (
-    <TableRow  role="row">
-    <Img src={image} />
-    <Cabin>{name}</Cabin>
-    <div>Fits up to {maxCapacity} guests</div>
-    <Price>{formatCurrency(regularPrice)}</Price>
-    <Discount>{formatCurrency(discount)}</Discount>
-    <button>Delete</button>
+  const { id: cabinId, name, maxCapacity, regularPrice, discount, image, description} = cabin;
 
+  function handleDuplicate() {
+    createCabin({
+      name: `Copy of ${name}`,
+      maxCapacity, regularPrice, discount, image, description
+    })
+  }
+
+   return (
+      <>
+        <TableRow  role="row">
+        <Img src={image} />
+         <Cabin>{name}</Cabin>
+         <div>Fits up to {maxCapacity} guests</div>
+         <Price>{formatCurrency(regularPrice)}</Price>
+         {discount ? (<Discount>{discount > 0 ? formatCurrency(discount) : "No discount"}</Discount>) : (<span>&mdash;</span>)}
+         <div>
+    
+    <button disabled={isCreating} onClick={handleDuplicate}><HiSquare2Stack/></button>
+    <button onClick={() => setShowForm((show) => !show)}><HiPencil/></button>
+    <button onClick={() => deleteCabin(cabinId)} disabled={isDeleting }>
+      <HiTrash/>
+    </button>
+    </div>
    </TableRow>
-  )
+   {showForm && <CreateCabinForm cabinToEdit={cabin}/>}
+   </>
+  );
   
 }
 
-export default CabinRow
+export default CabinRow;

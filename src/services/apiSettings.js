@@ -8,7 +8,7 @@ export async function getSettings() {
     throw new Error("Settings could not be loaded");
   }
   return data;
-}
+} 
 
 // We expect a newSetting object that looks like {setting: newValue}
 export async function updateSetting(newSetting) {
