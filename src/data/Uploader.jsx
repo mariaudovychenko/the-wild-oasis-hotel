@@ -16,7 +16,7 @@ import { guests } from "./data-guests";
 // };
 
 async function deleteGuests() {
-  const { error } = await supabase.from("guests").delete().gt("id", 0);
+  const { error } = await supabase.from("guests").delete().gt("id", 0); 
   if (error) console.log(error.message);
 }
 
