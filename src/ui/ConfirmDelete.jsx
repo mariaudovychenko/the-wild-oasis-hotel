@@ -38,7 +38,7 @@ function ConfirmDelete({ resourceName, onConfirm, disabled, onCloseModal }) {
         </Button>
       </div>
     </StyledConfirmDelete>
-  );
+  ); 
 }
 
 export default ConfirmDelete;
