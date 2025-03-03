@@ -74,3 +74,5 @@ export async function updateCurrentUser({ password, fullName, avatar }) {
   if (error2) throw new Error(error2.message);
   return updatedUser;
 }
+
+// https://iomhqpffeazdehrqzmgp.supabase.co/storage/v1/object/public/avatars//cabin-004.jpg

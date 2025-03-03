@@ -13,7 +13,7 @@ const [searchParams] = useSearchParams();
 
   if (isLoading) return <Spinner />;
   if (!cabins.length) 
-    return <Empty resourceName="bookings" />;
+    return <Empty resourceName="bookings" />; 
 
     // 1) FILTER
   const filterValue = searchParams.get("discount") || "all"
