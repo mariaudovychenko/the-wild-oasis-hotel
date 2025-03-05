@@ -5,7 +5,7 @@ import Heading from "../ui/Heading";
 import Row from "../ui/Row";
 
 function Dashboard() {
-const {bookings, isLoading} = useRecentBookings();
+// const {bookings, isLoading} = useRecentBookings();
 
   return (
     <>

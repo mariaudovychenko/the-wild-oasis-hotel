@@ -1,4 +1,3 @@
-import { id } from "date-fns/locale";
 import supabase, {supabaseUrl} from "./supabase";
 
 
