@@ -1,4 +1,4 @@
-The Wild Oasis Hotel
+The Wild Oasis Hotel by Maria
 
 https://the-wild-oasis-hotel-by-maria.netlify.app/dashboard
 
