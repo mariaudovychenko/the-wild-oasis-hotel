@@ -1,18 +1,23 @@
 import { Suspense } from "react";
 import CabinList from "../_components/CabinList";
 import Spinner from "../_components/Spinner";
+import { getCabin, getCabins } from "../_lib/data-service";
+
+
+export const revalidate = 3600;
 
 export const metadata = {
     title: "Cabins",
 };
 
-export default  function Page() {
+export default async function Page() {
+  
 
 
   return (
     <div>
       <h1 className="text-4xl mb-5 text-accent-400 font-medium">
-        Our Luxury Cabins
+        Our {cabins.length} Luxury Cabins
       </h1>
       <p className="text-primary-200 text-lg mb-10">
         Cozy yet luxurious cabins, located right in the heart of the Italian
